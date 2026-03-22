@@ -3,405 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>800V Elektroautos Deutschland 2025/2026</title>
+<title>800V Elektroautos Deutschland</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0c0f;
-    --bg2: #111318;
-    --bg3: #191c23;
-    --bg4: #1f232c;
-    --border: #252a35;
-    --border2: #2e3545;
-    --accent: #00d4aa;
-    --accent2: #00a87f;
-    --accent3: rgba(0,212,170,0.12);
-    --accent-warn: #f0a500;
-    --accent-red: #ff4d6a;
-    --text: #e8eaf0;
-    --text2: #9aa0b0;
-    --text3: #5a6070;
-    --header: #00d4aa;
+    --bg:#0a0c0f; --bg2:#111318; --bg3:#191c23; --bg4:#1f232c;
+    --border:#252a35; --border2:#2e3545;
+    --accent:#00d4aa; --accent2:#00a87f;
+    --text:#e8eaf0; --text2:#9aa0b0; --text3:#5a6070;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:14px;}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 14px;
-    min-height: 100vh;
-    padding: 0;
-    overflow-x: hidden;
-  }
+  .page-header{background:linear-gradient(180deg,#0d1117 0%,#0a0c0f 100%);border-bottom:1px solid var(--border2);padding:28px 32px 20px;position:relative;overflow:hidden;}
+  .page-header::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(0,212,170,.07) 0%,transparent 70%);pointer-events:none;}
+  .header-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;opacity:.8;}
+  h1{font-size:28px;font-weight:700;letter-spacing:.02em;line-height:1.1;}
+  h1 span{color:var(--accent);}
+  .header-sub{margin-top:8px;font-size:13px;color:var(--text2);font-family:'JetBrains Mono',monospace;}
+  .header-meta{margin-top:4px;font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
 
-  /* Header */
-  .page-header {
-    background: linear-gradient(180deg, #0d1117 0%, #0a0c0f 100%);
-    border-bottom: 1px solid var(--border2);
-    padding: 28px 32px 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .page-header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(0,212,170,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .header-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    opacity: 0.8;
-  }
-  h1 {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    line-height: 1.1;
-  }
-  h1 span { color: var(--accent); }
-  .header-sub {
-    margin-top: 8px;
-    font-size: 13px;
-    color: var(--text2);
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-  }
-  .header-meta {
-    margin-top: 4px;
-    font-size: 11px;
-    color: var(--text3);
-    font-family: 'JetBrains Mono', monospace;
-  }
+  .controls{display:flex;align-items:center;gap:12px;padding:14px 32px;background:var(--bg2);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+  .ctrl-group{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:5px;}
+  .controls label{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;}
+  .controls select{background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:13px;padding:5px 10px;border-radius:4px;cursor:pointer;outline:none;}
+  .controls select:hover{border-color:var(--accent2);}
+  input[type=range]{-webkit-appearance:none;height:3px;background:var(--border2);border-radius:2px;padding:0;width:100px;border:none;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--accent);border-radius:50%;cursor:pointer;}
+  .ctrl-val{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);min-width:60px;}
+  .count-badge{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);}
+  .count-badge span{color:var(--accent);font-weight:600;}
 
-  /* Controls */
-  .controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 32px;
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .controls label {
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-right: 2px;
-  }
-  .controls select, .controls input[type="range"] {
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    color: var(--text);
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .controls select:hover, .controls select:focus {
-    border-color: var(--accent2);
-  }
-  .ctrl-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-  }
-  .ctrl-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    min-width: 65px;
-  }
-  input[type="range"] {
-    -webkit-appearance: none;
-    height: 3px;
-    background: var(--border2);
-    border-radius: 2px;
-    padding: 0;
-    width: 100px;
-    border: none;
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 14px; height: 14px;
-    background: var(--accent);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  .count-badge {
-    margin-left: auto;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--text2);
-  }
-  .count-badge span { color: var(--accent); font-weight: 600; }
+  .drag-hint{display:flex;align-items:center;gap:10px;padding:8px 32px;background:var(--bg3);border-bottom:1px solid var(--border);font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);}
+  .drag-hint strong{color:var(--text2);}
+  .reset-btn{margin-left:auto;padding:4px 12px;background:var(--bg4);border:1px solid var(--border2);border-radius:4px;color:var(--text2);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;transition:border-color .2s,color .2s;}
+  .reset-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-  /* Table wrapper */
-  .table-wrap {
-    overflow-x: auto;
-    padding: 0 0 32px;
-  }
+  .legend{display:flex;gap:16px;padding:10px 32px;background:var(--bg3);border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:center;}
+  .li{display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);}
+  .ld{width:8px;height:8px;border-radius:50%;}
+  .ldiv{width:1px;height:16px;background:var(--border2);}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1300px;
-  }
+  .table-wrap{overflow-x:auto;padding-bottom:0;}
+  table{border-collapse:collapse;width:100%;min-width:1900px;}
+  thead{position:sticky;top:0;z-index:10;}
 
-  /* Sticky header */
-  thead {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  thead tr {
-    background: var(--bg3);
-    border-bottom: 2px solid var(--accent2);
-  }
-  th {
-    padding: 10px 12px;
-    text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text2);
-    white-space: nowrap;
-    cursor: pointer;
-    user-select: none;
-    border-right: 1px solid var(--border);
-    transition: color 0.15s, background 0.15s;
-  }
-  th:last-child { border-right: none; }
-  th:hover { color: var(--accent); background: var(--bg4); }
-  th.sorted { color: var(--accent); }
-  th .sort-arrow { margin-left: 4px; opacity: 0.4; font-size: 9px; }
-  th.sorted .sort-arrow { opacity: 1; }
+  th{padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);white-space:nowrap;border-right:1px solid var(--border);background:var(--bg3);border-bottom:2px solid var(--accent2);user-select:none;cursor:default;transition:background .12s;}
+  th:last-child{border-right:none;}
+  th.sorted .th-label{color:var(--accent);}
+  th.drag-over{background:rgba(0,212,170,.12);outline:2px dashed var(--accent);outline-offset:-2px;}
+  th.dragging{opacity:.3;}
+  .th-inner{display:flex;align-items:center;gap:5px;}
+  .drag-handle{font-size:13px;color:var(--text3);cursor:grab;padding:1px 3px;border-radius:3px;transition:color .15s,background .15s;flex-shrink:0;}
+  .drag-handle:hover{color:var(--accent);background:rgba(0,212,170,.1);}
+  .th-label{cursor:pointer;transition:color .15s;}
+  .th-label:hover{color:var(--accent);}
+  .sa{font-size:9px;opacity:.35;cursor:pointer;}
+  th.sorted .sa{opacity:1;color:var(--accent);}
 
-  /* Rows */
-  tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.12s;
-  }
-  tbody tr:hover { background: var(--bg4); }
-  tbody tr:hover td:first-child { border-left: 2px solid var(--accent); }
+  tbody tr{border-bottom:1px solid var(--border);transition:background .12s;}
+  tbody tr:hover{background:var(--bg4);}
+  td{padding:9px 12px;vertical-align:middle;white-space:nowrap;border-right:1px solid var(--border);font-size:13px;}
+  td:last-child{border-right:none;}
 
-  td {
-    padding: 9px 12px;
-    vertical-align: middle;
-    white-space: nowrap;
-    border-right: 1px solid var(--border);
-    font-size: 13px;
-  }
-  td:last-child { border-right: none; }
+  .brand-tag{font-size:14px;font-weight:700;font-family:'Rajdhani',sans-serif;letter-spacing:.08em;color:#fff;text-transform:uppercase;}
+  .model-text{font-size:13px;color:var(--text);}
 
-  /* Model cell */
-  .model-cell { min-width: 200px; }
-  .brand {
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .model-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text);
-    margin-top: 1px;
-  }
+  /* New columns */
+  .ant-badge{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:.04em;white-space:nowrap;}
+  .ant-awd{background:rgba(99,150,255,.15);color:#6396ff;border:1px solid rgba(99,150,255,.3);}
+  .ant-rwd{background:rgba(0,212,170,.12);color:#00d4aa;border:1px solid rgba(0,212,170,.25);}
+  .ant-fwd{background:rgba(240,165,0,.12);color:#f0a500;border:1px solid rgba(240,165,0,.25);}
+  .ant-both{font-size:9px;}
+  .ab-val{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);}
+  .ab-est{color:var(--text3);font-style:italic;}
+  .sprint-val{font-family:'JetBrains Mono',monospace;font-size:13px;}
 
-  /* Segment badge */
-  .seg-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-  }
-  .seg-limousine { background: rgba(99,150,255,0.15); color: #6396ff; border: 1px solid rgba(99,150,255,0.3); }
-  .seg-kompakt   { background: rgba(0,212,170,0.12);  color: #00d4aa; border: 1px solid rgba(0,212,170,0.25); }
-  .seg-mittel    { background: rgba(240,165,0,0.12);  color: #f0a500; border: 1px solid rgba(240,165,0,0.25); }
-  .seg-gross     { background: rgba(255,100,100,0.12); color: #ff8080; border: 1px solid rgba(255,100,100,0.25); }
+  .seg-badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:500;white-space:nowrap;}
+  .seg-l{background:rgba(99,150,255,.15);color:#6396ff;border:1px solid rgba(99,150,255,.3);}
+  .seg-k{background:rgba(0,212,170,.12);color:#00d4aa;border:1px solid rgba(0,212,170,.25);}
+  .seg-m{background:rgba(240,165,0,.12);color:#f0a500;border:1px solid rgba(240,165,0,.25);}
+  .seg-g{background:rgba(255,100,100,.12);color:#ff8080;border:1px solid rgba(255,100,100,.25);}
 
-  /* Number cells */
-  .num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--text);
-    text-align: right;
-  }
-  .num-unit {
-    font-size: 10px;
-    color: var(--text3);
-    margin-left: 2px;
-  }
+  .num{font-family:'JetBrains Mono',monospace;font-size:13px;}
+  .nu{font-size:10px;color:var(--text3);margin-left:2px;}
+  .ps-l{color:#8ab4f8;}.ps-m{color:#f0a500;}.ps-h{color:#ff6b6b;}.ps-x{color:#ff3333;font-weight:700;}
+  .dc-ok{color:#8ab4f8;}.dc-fast{color:#f0a500;}.dc-ultra{color:var(--accent);font-weight:600;}.dc-hyper{color:#ff4444;font-weight:700;}
 
-  /* Color scale for PS */
-  .ps-low    { color: #8ab4f8; }
-  .ps-mid    { color: #f0a500; }
-  .ps-high   { color: #ff6b6b; }
-  .ps-insane { color: #ff4444; font-weight: 700; }
+  .price-range{display:flex;flex-direction:column;gap:1px;font-family:'JetBrains Mono',monospace;}
+  .price-from{font-size:13px;font-weight:600;color:var(--text);}
+  .price-to{font-size:11px;color:var(--text3);}
 
-  /* Color scale for DC kW */
-  .dc-ok   { color: #8ab4f8; }
-  .dc-fast { color: #f0a500; }
-  .dc-ultra { color: var(--accent); }
-  .dc-hyper { color: #ff4444; font-weight: 600; }
+  .range-cell{display:flex;flex-direction:column;gap:2px;}
+  .range-row{display:flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:12px;}
+  .range-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;min-width:22px;}
+  .r-avg-tested{color:var(--text2);}
+  .r-avg-calc{color:var(--text3);font-style:italic;}
+  .r-peak-g{color:var(--accent);font-weight:600;}
+  .r-peak-y{color:#f0a500;font-weight:600;}
+  .r-peak-r{color:#ff6b6b;font-weight:600;}
+  .r-na{color:var(--text3);}
+  .r-src{font-size:9px;color:var(--text3);margin-top:1px;font-family:'JetBrains Mono',monospace;}
 
-  /* Color for kWh/min */
-  .eff-ok   { color: #8ab4f8; }
-  .eff-good { color: var(--accent); }
-  .eff-great { color: #f0a500; font-weight: 600; }
-  .eff-best { color: #ff6b6b; font-weight: 700; }
+  .lt-fast{color:var(--accent);font-weight:600;}.lt-ok{color:var(--text);}.lt-slow{color:var(--text2);}
+  .kurve-stars{font-size:12px;letter-spacing:1px;}
+  .s-on{color:var(--accent);}.s-off{color:var(--border2);}
+  .kurve-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);margin-top:1px;}
+  .wltp-wrap{display:flex;align-items:center;gap:8px;}
+  .wltp-bar{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));min-width:4px;}
+  .status{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-family:'JetBrains Mono',monospace;}
+  .s-now{background:rgba(0,212,170,.15);color:var(--accent);border:1px solid rgba(0,212,170,.3);}
+  .s-new{background:rgba(240,165,0,.15);color:#f0a500;border:1px solid rgba(240,165,0,.3);}
 
-  /* Ladezeit color */
-  .lt-fast { color: var(--accent); font-weight: 600; }
-  .lt-ok   { color: var(--text); }
-  .lt-slow { color: var(--text2); }
+  .no-results{text-align:center;padding:48px;font-family:'JetBrains Mono',monospace;color:var(--text3);}
+  .no-results strong{color:var(--text2);display:block;font-size:16px;margin-bottom:8px;}
 
-  /* Ladekurve stars */
-  .kurve-stars { font-size: 12px; letter-spacing: 1px; }
-  .star-on  { color: var(--accent); }
-  .star-off { color: var(--border2); }
-
-  .kurve-label {
-    font-size: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text3);
-    margin-top: 2px;
-  }
-
-  /* WLTP bar */
-  .wltp-bar-wrap { display: flex; align-items: center; gap: 8px; }
-  .wltp-bar {
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent2), var(--accent));
-    min-width: 4px;
-  }
-  .wltp-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    min-width: 50px;
-    text-align: right;
-  }
-
-  /* Price */
-  .price-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  /* Status pill */
-  .status {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.04em;
-  }
-  .status-now  { background: rgba(0,212,170,0.15); color: var(--accent); border: 1px solid rgba(0,212,170,0.3); }
-  .status-new  { background: rgba(240,165,0,0.15); color: #f0a500; border: 1px solid rgba(240,165,0,0.3); }
-  .status-soon { background: rgba(130,130,200,0.15); color: #a0a0e0; border: 1px solid rgba(130,130,200,0.3); }
+  /* Sources section */
+  .sources-section{background:var(--bg2);border-top:2px solid var(--border2);padding:24px 32px;}
+  .sources-toggle{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;margin-bottom:0;}
+  .sources-toggle:hover .src-title{color:var(--accent);}
+  .src-title{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;transition:color .15s;}
+  .src-arrow{font-size:12px;color:var(--text3);transition:transform .2s;}
+  .src-arrow.open{transform:rotate(180deg);}
+  .sources-body{display:none;margin-top:16px;}
+  .sources-body.open{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
+  .src-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:12px 14px;}
+  .src-card-title{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--accent);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+  .src-item{display:flex;flex-direction:column;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+  .src-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .src-item-label{font-size:11px;color:var(--text2);font-family:'JetBrains Mono',monospace;}
+  .src-item-link{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-decoration:none;word-break:break-all;}
+  .src-item-link:hover{color:var(--accent);}
+  .src-item-note{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px;font-style:italic;}
 
   /* Footnote */
-  .footnote {
-    padding: 16px 32px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text3);
-    line-height: 1.7;
-    border-top: 1px solid var(--border);
-    background: var(--bg2);
-  }
-  .footnote strong { color: var(--text2); }
-
-  /* Legend */
-  .legend {
-    display: flex;
-    gap: 24px;
-    padding: 12px 32px;
-    background: var(--bg3);
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text3);
-  }
-  .legend-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-  }
-
-  /* Responsive note */
-  .scroll-hint {
-    display: none;
-    padding: 8px 32px;
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text3);
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-  }
-  @media (max-width: 900px) {
-    .scroll-hint { display: block; }
-    .page-header { padding: 20px 16px 16px; }
-    .controls { padding: 12px 16px; }
-    .legend { padding: 10px 16px; }
-    .footnote { padding: 12px 16px; }
-    h1 { font-size: 22px; }
-  }
-
-  /* No results */
-  .no-results {
-    text-align: center;
-    padding: 48px;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text3);
-    font-size: 13px;
-  }
-  .no-results strong { color: var(--text2); display: block; font-size: 16px; margin-bottom: 8px; }
+  .footnote{padding:16px 32px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);line-height:1.9;border-top:1px solid var(--border);background:var(--bg2);}
+  .footnote strong{color:var(--text2);}
+  @media(max-width:900px){.page-header,.controls,.drag-hint,.legend,.footnote,.sources-section{padding:16px;}h1{font-size:22px;}.sources-body.open{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
 <div class="page-header">
-  <div class="header-label">// Fahrzeugdaten · Stand März 2026</div>
+  <div class="header-label">// Fahrzeugdaten · Stand März 2026 · Verifiziert</div>
   <h1><span>800V</span> Elektroautos Deutschland</h1>
-  <div class="header-sub">Vollständige Übersicht · Verfügbare &amp; bestellbare Modelle</div>
-  <div class="header-meta">Quellen: insideevs.de · autobild.de · auto-motor-und-sport.de · Hersteller · Stand: März 2026</div>
+  <div class="header-sub">Ladeleistung: Hersteller-Peak vs. reale Ø / Peak-Werte aus Praxistests</div>
+  <div class="header-meta">Quellen: ADAC Ecotest · auto motor und sport · insideevs.de · autobild.de · Hersteller · Stand März 2026</div>
 </div>
 
 <div class="controls">
@@ -409,311 +157,470 @@
     <label>Segment</label>
     <select id="filterSegment">
       <option value="">Alle</option>
-      <option value="Limousine">Limousine</option>
-      <option value="Kompakt-SUV">Kompakt-SUV</option>
-      <option value="Mittel-SUV">Mittel-SUV</option>
-      <option value="Groß-SUV">Groß-SUV</option>
+      <option value="l">Limousine / GT</option>
+      <option value="k">Kompakt-SUV</option>
+      <option value="m">Mittel-SUV</option>
+      <option value="g">Groß-SUV</option>
     </select>
   </div>
   <div class="ctrl-group">
-    <label>Max. Preis</label>
+    <label>Max. Preis (ab)</label>
     <input type="range" id="filterPrice" min="40000" max="160000" step="5000" value="160000">
     <span class="ctrl-val" id="priceVal">alle</span>
   </div>
   <div class="ctrl-group">
-    <label>Min. DC-Laden</label>
+    <label>Min. DC</label>
     <input type="range" id="filterDC" min="0" max="400" step="10" value="0">
     <span class="ctrl-val" id="dcVal">alle</span>
   </div>
   <div class="ctrl-group">
-    <label>Verfügbarkeit</label>
+    <label>Status</label>
     <select id="filterStatus">
       <option value="">Alle</option>
-      <option value="Verfügbar">Verfügbar / Bestellbar</option>
+      <option value="Verfügbar">Verfügbar</option>
       <option value="Neu">Neu 2026</option>
-      <option value="Bald">Bald verfügbar</option>
     </select>
   </div>
-  <div class="count-badge">
-    <span id="rowCount">0</span> Modelle
-  </div>
+  <div class="count-badge"><span id="rowCount">0</span> Modelle</div>
+</div>
+
+<div class="drag-hint">
+  ⠿ <strong>Spalten verschieben:</strong> ⠿ Symbol greifen und nach links/rechts ziehen
+  <button class="reset-btn" id="resetCols">↺ Zurücksetzen</button>
 </div>
 
 <div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:#6396ff"></div> Limousine / Gran Turismo</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#00d4aa"></div> Kompakt-SUV</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#f0a500"></div> Mittel-SUV</div>
-  <div class="legend-item"><div class="legend-dot" style="background:#ff8080"></div> Groß-SUV</div>
-  <div class="legend-item" style="margin-left:auto">★★★★★ = sehr flache Ladekurve · klick auf Spalte = sortieren</div>
+  <div class="li"><div class="ld" style="background:#6396ff"></div>Limousine</div>
+  <div class="li"><div class="ld" style="background:#00d4aa"></div>Kompakt-SUV</div>
+  <div class="li"><div class="ld" style="background:#f0a500"></div>Mittel-SUV</div>
+  <div class="li"><div class="ld" style="background:#ff8080"></div>Groß-SUV</div>
+  <div class="ldiv"></div>
+  <div class="li" style="gap:10px;flex-wrap:wrap">
+    <span style="color:var(--text2);font-weight:600">Ladekurve:</span>
+    <span><span style="color:var(--accent)">★★★★★</span> Sehr flach — hält Peak bis ~60–70% SoC</span>
+    <span><span style="color:var(--accent)">★★★★</span>☆ Flach — hält Peak bis ~40–50% SoC</span>
+    <span><span style="color:var(--accent)">★★★</span>☆☆ Gut — kurzer Peak, gleichmäßiger Abfall</span>
+    <span><span style="color:var(--accent)">★★</span>☆☆☆ Mittel — Peak nur kurz, deutlicher Abfall</span>
+  </div>
 </div>
-
-<div class="scroll-hint">← scrollbar nach rechts für alle Spalten →</div>
 
 <div class="table-wrap">
-<table id="mainTable">
-<thead>
-<tr>
-  <th data-col="brand" class="sorted">Modell <span class="sort-arrow">↑</span></th>
-  <th data-col="segment">Segment <span class="sort-arrow">↕</span></th>
-  <th data-col="preis">Preis ab <span class="sort-arrow">↕</span></th>
-  <th data-col="ps">Max. PS <span class="sort-arrow">↕</span></th>
-  <th data-col="akku">Akku netto <span class="sort-arrow">↕</span></th>
-  <th data-col="dc">Max. DC <span class="sort-arrow">↕</span></th>
-  <th data-col="zeit">10–80% <span class="sort-arrow">↕</span></th>
-  <th data-col="wltp">WLTP Range <span class="sort-arrow">↕</span></th>
-  <th data-col="eff">Eff. Ladetempo <span class="sort-arrow">↕</span></th>
-  <th data-col="kurve">Ladekurve <span class="sort-arrow">↕</span></th>
-  <th data-col="status">Status <span class="sort-arrow">↕</span></th>
-</tr>
-</thead>
-<tbody id="tableBody">
-</tbody>
-</table>
-<div class="no-results" id="noResults" style="display:none">
-  <strong>Keine Fahrzeuge gefunden</strong>Filter anpassen
-</div>
+  <table id="mainTable">
+    <thead><tr id="headerRow"></tr></thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div class="no-results" id="noResults" style="display:none">
+    <strong>Keine Fahrzeuge gefunden</strong>Filter anpassen
+  </div>
 </div>
 
 <div class="footnote">
-  <strong>Hinweise zur Datenbasis:</strong><br>
-  · Preise = Basispreis (günstigste Variante), inkl. MwSt., Deutschland. Tatsächliche Ausstattungspreise oft höher.<br>
-  · Max. PS = höchste verfügbare Motorisierung (inkl. Boost-Modus, falls Serienmodell).<br>
-  · DC-Ladeleistung = Peak-Leistung lt. Hersteller; in der Praxis oft nur kurz gehalten.<br>
-  · Ladezeit 10–80% = Herstellerangabe unter optimalen Bedingungen an ausreichend leistungsstarker Säule (≥350 kW).<br>
-  · Eff. Ladetempo = (Akku netto × 0,7) / Ladezeit = durchschn. kWh/min im 10–80%-Hub. Vergleichswert ohne Praxisabzug.<br>
-  · Ladekurve: ★★★★★ = sehr flat (hält Peak lang), ★★★ = deutlich abfallend. Beruht auf Testberichten und Hersteller-Ladekurven.<br>
-  · Zeekr 7X: 10,5 min bei Spezial-Ladesäule (Geely VREMT 5.5C); in D real ca. 16 min an 360-kW-Säulen.<br>
-  · BMW iX3: WLTP 805 km = maximale Angabe; typische reale AB-Reichweite ≈ 500–550 km.<br>
-  · Lucid Air: 924-Volt-Architektur (technisch kein klassisches 800V, aber funktional überlegen).<br>
-  · Polestar 5, Porsche Cayenne Electric: Ladezeiten teils noch nicht offiziell bestätigt, Schätzwerte markiert mit ~.
+  <strong>Methodik „Real Ø → Peak":</strong>
+  · <strong>Ø</strong> = (Akku netto × 0,7 × 60) ÷ Ladezeit = gemittelte kW über 10–80% · Kursiv = rechnerisch, kein Test ·
+  <strong>Peak</strong> = gemessener Spitzenwert, oft nur kurz bei niedrigem SoC ·
+  <strong>Preis „bis ca."</strong> = vollausgestattetes Topmodell, Schätzwert ·
+  <strong>0–100 km/h</strong> = stärkste Serienversion inkl. Boost/Launch Control ·
+  <strong>AB ~130 km/h</strong> = Autobahn-Reichweite; direkte ADAC-Werte wo verfügbar, sonst ~ = Schätzung (WLTP × ~0,65) ·
+  <strong>Anhängelast</strong> = gebremste Anhängelast lt. Hersteller; 0 = keine AHK möglich ·
+  Akku = Netto-kWh · PS = stärkste Serienversion inkl. Boost
+</div>
+
+<!-- Sources section -->
+<div class="sources-section">
+  <div class="sources-toggle" onclick="toggleSources()">
+    <span class="src-title">Quellenverzeichnis</span>
+    <span class="src-arrow" id="srcArrow">▼</span>
+    <span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);margin-left:8px">— Alle Datenquellen nach Modell</span>
+  </div>
+  <div class="sources-body" id="sourcesBody">
+
+    <div class="src-card">
+      <div class="src-card-title">Porsche Taycan</div>
+      <div class="src-item"><span class="src-item-label">Preis, PS, Varianten, 0–100</span><a class="src-item-link" href="https://www.autobild.de/marken-modelle/porsche/taycan/" target="_blank">autobild.de/taycan</a><span class="src-item-note">Basis 102.600 €, Turbo GT 241.100 €, 1.108 PS · Turbo GT: 2,0 s · Basis RWD: 4,8 s</span></div>
+      <div class="src-item"><span class="src-item-label">Akku, DC, Ladezeit, AC-Laden</span><a class="src-item-link" href="https://www.autoscout24.de/auto/porsche/porsche-taycan/" target="_blank">autoscout24.de</a><span class="src-item-note">97 kWh netto, 320 kW, 18 min · AC: 11 kW (22 kW Option bei neuen Destination-Chargern)</span></div>
+      <div class="src-item"><span class="src-item-label">Real-Ladeleistung (Peak + Ø gemessen)</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/porsche/taycan/y1a-facelift/332597/" target="_blank">ADAC Ecotest Perf. Plus</a><span class="src-item-note">Peak 296 kW · Ø 275 kW über 10–80% — bisher kein E-Auto besser im ADAC-Test</span></div>
+      <div class="src-item"><span class="src-item-label">WLTP Reichweite</span><a class="src-item-link" href="https://www.carwow.de/porsche/taycan/technische-daten" target="_blank">Carwow technische Daten</a><span class="src-item-note">Bis 687 km WLTP (Basis RWD Perf. Plus) · RWD und AWD verfügbar</span></div>
+      <div class="src-item"><span class="src-item-label">AB-Reichweite ~130 km/h</span><a class="src-item-link" href="https://www.fast-forward.at/post/neuer-porsche-taycan-4s-2025-test-fahrbericht-abmessungen-kofferraumvolumen-gewicht" target="_blank">Praxistest Taycan 4S 2025</a><span class="src-item-note">~400 km bei 130 km/h (Taycan 4S Praxistest) · ADAC Langstrecke gesamt: 981 km mit 1 Ladestopp</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de Anhängelast-Ranking</a><span class="src-item-note">1.000 kg gebremst (Hersteller)</span></div>
+    </div>
+
+    <!-- PORSCHE MACAN -->
+    <div class="src-card">
+      <div class="src-card-title">Porsche Macan Electric</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP, Antrieb</span><a class="src-item-link" href="https://insideevs.de/features/718545/porsche-macan-electric-ubersichtsseite-weiterleitung/" target="_blank">insideevs.de Macan-Übersicht</a><span class="src-item-note">ab 83k €, 95 kWh, 270 kW, 641 km · RWD und AWD verfügbar</span></div>
+      <div class="src-item"><span class="src-item-label">0–100 km/h, Anhängelast</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de</a><span class="src-item-note">Macan Turbo 3,3 s · Anhängelast 2.500 kg (gebremst)</span></div>
+      <div class="src-item"><span class="src-item-label">Ladezeit real, AC-Laden</span><a class="src-item-link" href="https://www.auto-motor-und-sport.de/tech-zukunft/alternative-antriebe/diese-elektroautos-laden-am-schnellsten-wieder-auf/" target="_blank">auto motor und sport</a><span class="src-item-note">real 22 min gemessen · AC: 11 kW (22 kW Option)</span></div>
+      <div class="src-item"><span class="src-item-label">AB-Reichweite ~130 km/h</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/elektroauto-reichweite-im-winter-adac-test-2026/" target="_blank">ADAC Wintertest 2026</a><span class="src-item-note">Macan im ADAC-Test: schlechter als A6 · ~420 km Sommer-Schätzung (WLTP 641 × 0,65)</span></div>
+    </div>
+
+    <!-- PORSCHE CAYENNE -->
+    <div class="src-card">
+      <div class="src-card-title">Porsche Cayenne Electric</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, PS, WLTP, 0–100</span><a class="src-item-link" href="https://www.elektroautomobil.com/newsbeitrag/erste-fahrt-porsche-cayenne-2026/" target="_blank">elektroautomobil.com Erstfahrt</a><span class="src-item-note">ab 144.900 €, 113 kWh, >400 kW, 1.156 PS, 2,5 s · Turbo mit 850 kW in Launch</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast</span><a class="src-item-link" href="https://www.auto-motor-und-sport.de/elektroauto/neue-elektroautos-2026-das-werden-die-wichtigsten-e-neuheiten-des-jahres/" target="_blank">auto-motor-und-sport.de</a><span class="src-item-note">Cayenne Electric: 3.500 kg Anhängelast (Hersteller)</span></div>
+    </div>
+
+    <!-- AUDI E-TRON GT -->
+    <div class="src-card">
+      <div class="src-card-title">Audi e-tron GT / RS e-tron GT Perf.</div>
+      <div class="src-item"><span class="src-item-label">Preis, PS, Akku, DC, WLTP, 0–100</span><a class="src-item-link" href="https://www.autobild.de/artikel/diese-elektroautos-laden-superschnell-an-der-hpc-saeule-ladeleistung-22473201.html" target="_blank">autobild.de</a><span class="src-item-note">e-tron GT ab 102k, RS ab 130k, 97 kWh, 270/320 kW · RS 0–100: 2,5 s</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast, AC-Laden</span><a class="src-item-link" href="https://insideevs.de/features/763929/elektroautos-800volt-modelluebersicht/" target="_blank">insideevs.de 800V-Liste</a><span class="src-item-note">keine Anhängelast (0 kg) · AC: 11 kW Serie</span></div>
+    </div>
+
+    <!-- AUDI Q6 / SQ6 -->
+    <div class="src-card">
+      <div class="src-card-title">Audi Q6 e-tron / SQ6 e-tron</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP, PS, Antrieb</span><a class="src-item-link" href="https://insideevs.de/features/752347/audi-q6-etron-daten-preise/" target="_blank">insideevs.de</a><span class="src-item-note">Q6 ab 63.500 €, 95 kWh netto, 270 kW, bis 661 km · RWD/AWD · SQ6: 4,4 s</span></div>
+      <div class="src-item"><span class="src-item-label">Real-Ladezeit</span><a class="src-item-link" href="https://www.auto-motor-und-sport.de/tech-zukunft/alternative-antriebe/diese-elektroautos-laden-am-schnellsten-wieder-auf/" target="_blank">auto motor und sport</a><span class="src-item-note">real 24 min statt versprochener 21 min</span></div>
+      <div class="src-item"><span class="src-item-label">AC-Laden, Anhängelast</span><a class="src-item-link" href="https://www.carwow.de/audi/sq6-e-tron/technische-daten" target="_blank">Carwow technische Daten</a><span class="src-item-note">AC: 11 kW (22 kW Option) · Q6: 2.000 kg, SQ6: 2.400 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">AB-Reichweite ~130 km/h</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/audi/audi-q6-e-tron/" target="_blank">ADAC Autotest</a><span class="src-item-note">~500 km Sommer-Schätzung · ADAC-Test bestätigt 95 kWh netto</span></div>
+    </div>
+
+    <!-- AUDI A6 -->
+    <div class="src-card">
+      <div class="src-card-title">Audi A6 e-tron Performance</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP, 0–100, Antrieb</span><a class="src-item-link" href="https://insideevs.de/news/785029/audi-a6avant-etron-winterreichweitentest-adac/" target="_blank">insideevs.de ADAC-Wintertest</a><span class="src-item-note">ab 74k · 94 kWh · 270 kW · 0–100: 3,9 s (S6 AWD) · RWD/AWD</span></div>
+      <div class="src-item"><span class="src-item-label">AB-Reichweite ~130 km/h (ADAC gemessen)</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/elektroauto-reichweite-im-winter-adac-test-2026/" target="_blank">ADAC Wintertest 2026</a><span class="src-item-note">441 km bei 0°C Winter-Autobahn (Testsieger 2026) · Sommer ~540 km</span></div>
+      <div class="src-item"><span class="src-item-label">AC-Laden, Anhängelast</span><a class="src-item-link" href="https://www.car-editors.org/artikel/detail/66611" target="_blank">car-editors.org A6 Fahrbericht</a><span class="src-item-note">AC: 11 kW / 22 kW Option · Anhängelast 2.100 kg</span></div>
+    </div>
+
+    <!-- HYUNDAI IONIQ 5 / 5N / 6 -->
+    <div class="src-card">
+      <div class="src-card-title">Hyundai Ioniq 5 / Ioniq 5 N / Ioniq 6</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP</span><a class="src-item-link" href="https://insideevs.de/features/740942/hyundai-ioniq5-uebersicht-daten-preise/" target="_blank">insideevs.de</a><span class="src-item-note">Ioniq 5 ab 44.900 €, 80 kWh netto, 260 kW, 570 km (Okt. 2025)</span></div>
+      <div class="src-item"><span class="src-item-label">Ioniq 5 N: Preis, PS, DC</span><a class="src-item-link" href="https://www.hyundai.news/de/articles/press-releases/neuer-hyundai-ioniq-5-n-startet-ab-74900-euro.html" target="_blank">Hyundai Pressemitteilung</a><span class="src-item-note">ab 74.900 €, 609 PS (650 mit Boost), 240 kW, 18 min</span></div>
+      <div class="src-item"><span class="src-item-label">Real-Ladeleistung</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/hyundai/hyundai-ioniq-5/" target="_blank">ADAC Ecotest</a><span class="src-item-note">Peak 255 kW, Ø >200 kW · AC: 11 kW Serie</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/elektroautos-mit-anhaengerkupplung/" target="_blank">ADAC Anhängelast-Übersicht</a><span class="src-item-note">Ioniq 5: 1.600 kg · Ioniq 6: 1.500 kg</span></div>
+      <div class="src-item"><span class="src-item-label">AB-Reichweite ~130 km/h (ADAC gemessen)</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/elektroauto-reichweite-im-winter-adac-test-2026/" target="_blank">ADAC Wintertest 2026</a><span class="src-item-note">Ioniq 5: 69% Mehrverbrauch vs. WLTP · Ioniq 6 ADAC-Langstreckenkönig (931 km mit 1 Ladestopp)</span></div>
+    </div>
+
+    <!-- HYUNDAI IONIQ 9 -->
+    <div class="src-card">
+      <div class="src-card-title">Hyundai Ioniq 9</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP, Anhängelast</span><a class="src-item-link" href="https://insideevs.de/features/763929/elektroautos-800volt-modelluebersicht/" target="_blank">insideevs.de 800V-Liste</a><span class="src-item-note">ab ~69k, 110 kWh, 350 kW, 620 km · Anhängelast 2.500 kg lt. Hersteller</span></div>
+      <div class="src-item"><span class="src-item-label">0–100 km/h, Antrieb, AC-Laden</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de</a><span class="src-item-note">Ioniq 9 315 Performance: ~5 s · RWD/AWD · AC 11 kW</span></div>
+    </div>
+
+    <!-- KIA EV6 / EV6 GT / EV9 -->
+    <div class="src-card">
+      <div class="src-card-title">Kia EV6 / EV6 GT / EV9</div>
+      <div class="src-item"><span class="src-item-label">EV6 Daten gesamt</span><a class="src-item-link" href="https://insideevs.de/features/744364/mittelklasse-suvs-elektroantrieb-marktubersicht/" target="_blank">insideevs.de</a><span class="src-item-note">EV6 ab 44k, 80 kWh, 258 kW, 582 km · 0–100: 5,1 s (AWD) · 3,5 s (GT)</span></div>
+      <div class="src-item"><span class="src-item-label">EV6 GT 0–100 km/h</span><a class="src-item-link" href="https://en.wikipedia.org/wiki/Kia_EV6" target="_blank">Wikipedia Kia EV6</a><span class="src-item-note">GT: 3,5 s, 645 PS, 240 kW DC, 18 min</span></div>
+      <div class="src-item"><span class="src-item-label">EV9 Daten, Anhängelast</span><a class="src-item-link" href="https://insideevs.de/features/763929/elektroautos-800volt-modelluebersicht/" target="_blank">insideevs.de 800V-Liste</a><span class="src-item-note">EV9 ab 78k, 100 kWh, 233 kW, 563 km, 24 min · 2.500 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast EV6</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de Ranking</a><span class="src-item-note">EV6 AWD: 1.800 kg gebremst</span></div>
+    </div>
+
+    <!-- GENESIS -->
+    <div class="src-card">
+      <div class="src-card-title">Genesis GV60 / Electrified GV70 / Electrified G80</div>
+      <div class="src-item"><span class="src-item-label">GV60 Daten gesamt</span><a class="src-item-link" href="https://insideevs.de/features/743691/kompakte-elektrosuvs-lange-marktubersicht/" target="_blank">insideevs.de</a><span class="src-item-note">GV60 ab 56k, 80 kWh, 232 kW, 18 min, 561 km · 0–100: 4,0 s (Performance)</span></div>
+      <div class="src-item"><span class="src-item-label">GV70 Daten, Anhängelast</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de</a><span class="src-item-note">GV70 ab 71k, 80 kWh, 240 kW, 479 km · 1.800 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">AC-Laden alle Genesis</span><a class="src-item-link" href="https://insideevs.de/features/763929/elektroautos-800volt-modelluebersicht/" target="_blank">insideevs.de 800V-Liste</a><span class="src-item-note">Alle Genesis: 11 kW AC serienmäßig</span></div>
+      <div class="src-item"><span class="src-item-label">ADAC Test GV60</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/genesis/genesis-gv60-test/" target="_blank">ADAC Autotest GV60 2025</a><span class="src-item-note">Schnelles Laden bestätigt · Platzangebot, Verbrauch im Test</span></div>
+    </div>
+
+    <!-- XPENG -->
+    <div class="src-card">
+      <div class="src-card-title">Xpeng G6 / G9</div>
+      <div class="src-item"><span class="src-item-label">G6 Daten gesamt</span><a class="src-item-link" href="https://evautos25.de/xpeng-g6-2026/" target="_blank">evautos25.de</a><span class="src-item-note">G6 ab 45k, 80 kWh, 280 kW, 20 min, 570 km · 0–100: 3,9 s (AWD) · RWD/AWD</span></div>
+      <div class="src-item"><span class="src-item-label">G9 WLTP, 0–100, Anhängelast</span><a class="src-item-link" href="https://de.driveduel.de/compare/xpeng/g9/vs/zeekr/x" target="_blank">driveduel.de</a><span class="src-item-note">G9: bis 585 km WLTP · 0–100: 3,9 s · 2.000 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">Ladezeit real bestätigt</span><a class="src-item-link" href="https://www.auto-motor-und-sport.de/tech-zukunft/alternative-antriebe/diese-elektroautos-laden-am-schnellsten-wieder-auf/" target="_blank">auto motor und sport</a><span class="src-item-note">G9: 20 min 10–80% im Test bestätigt · ~275 kW Peak</span></div>
+    </div>
+
+    <!-- LOTUS -->
+    <div class="src-card">
+      <div class="src-card-title">Lotus Emeya 900 / Eletre R</div>
+      <div class="src-item"><span class="src-item-label">Emeya 900: alle Daten</span><a class="src-item-link" href="https://firstev.de/lotus/emeya/" target="_blank">firstev.de</a><span class="src-item-note">918 PS, 102 kWh, 350 kW, 610 km · 0–100: 2,78 s · AWD</span></div>
+      <div class="src-item"><span class="src-item-label">Eletre R: alle Daten, Anhängelast</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de</a><span class="src-item-note">918 PS, 112 kWh, 350 kW, 600 km · 0–100: 2,95 s · 2.250 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">Real-Ladezeit</span><a class="src-item-link" href="https://insideevs.de/news/767994/reichweite-nachladen:-die-besten-elektroautos/" target="_blank">insideevs.de</a><span class="src-item-note">Emeya: 18 min an 350-kW-Säule · Eletre: 20 min</span></div>
+    </div>
+
+    <!-- SMART #5 -->
+    <div class="src-card">
+      <div class="src-card-title">Smart #5 (Dual Motor+)</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP, 0–100, Antrieb</span><a class="src-item-link" href="https://insideevs.de/news/780523/zeekr-7x-long-range-konkurrenzvergleich/" target="_blank">insideevs.de Vergleich</a><span class="src-item-note">ab 52k, 94 kWh, 400 kW, 560 km · 0–100: 3,8 s · AWD</span></div>
+      <div class="src-item"><span class="src-item-label">Real-Ladetest, AB-Reichweite (ADAC gemessen)</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/elektroauto-reichweite-im-winter-adac-test-2026/" target="_blank">ADAC Wintertest 2026</a><span class="src-item-note">17:16 min (10–80%), Säule max. 300 kW · 264 km in 20 min nachgeladen · München–Berlin mit 1 Ladestopp</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast</span><a class="src-item-link" href="https://insideevs.de/news/780523/zeekr-7x-long-range-konkurrenzvergleich/" target="_blank">insideevs.de</a><span class="src-item-note">Smart #5: 2.000 kg Anhängelast</span></div>
+    </div>
+
+    <!-- MERCEDES -->
+    <div class="src-card">
+      <div class="src-card-title">Mercedes CLA EQ / GLB EQ / GLC EQ</div>
+      <div class="src-item"><span class="src-item-label">CLA EQ: Daten, 0–100, AC-Laden</span><a class="src-item-link" href="https://insideevs.de/features/739813/elektroauto-neuheiten-jahr-2025/" target="_blank">insideevs.de</a><span class="src-item-note">CLA ab 55k, 85 kWh, 320 kW, 750 km · 0–100 ~4,9 s · AC: 11/22 kW · RWD/AWD</span></div>
+      <div class="src-item"><span class="src-item-label">GLC EQ: 0–100, Anhängelast, Antrieb</span><a class="src-item-link" href="https://www.automobil-produktion.de/management/global-automotive-business/bmw-ix3-gegen-den-mercedes-glc-eq-398.html" target="_blank">automobil-produktion.de iX3 vs. GLC</a><span class="src-item-note">GLC 400: 4,3 s, 360 kW, 489 PS · AWD · Anhängelast 2.100 kg</span></div>
+      <div class="src-item"><span class="src-item-label">GLB EQ Daten</span><a class="src-item-link" href="https://insideevs.de/features/744364/mittelklasse-suvs-elektroantrieb-marktubersicht/" target="_blank">insideevs.de</a><span class="src-item-note">GLB ab 60k, 85 kWh, 320 kW, 631 km · 1.800 kg Anhängelast</span></div>
+    </div>
+
+    <!-- LUCID -->
+    <div class="src-card">
+      <div class="src-card-title">Lucid Air (924V)</div>
+      <div class="src-item"><span class="src-item-label">Alle Daten, 0–100, AC-Laden, Anhängelast</span><a class="src-item-link" href="https://evautos25.de/lucid-air/" target="_blank">evautos25.de</a><span class="src-item-note">ab 120k, 112 kWh, 300 kW, 960 km · Sapphire 0–100: 1,89 s · AC: 22 kW · AWD · 2.268 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">AB-Reichweite (Langstreckentest)</span><a class="src-item-link" href="https://www.autozeitung.de/grosser-reichweitentest-2025-audi-bmw-hyundai-kia-lucid-mercedes-porsche-volvo-209365.html" target="_blank">auto zeitung Reichweitentest 2025</a><span class="src-item-note">Lucid im Vergleich gut · ~650 km AB-Schätzung aus Effizienz (WLTP × 0,68)</span></div>
+    </div>
+
+    <!-- VOLVO -->
+    <div class="src-card">
+      <div class="src-card-title">Volvo ES90 / EX90 (MY2026)</div>
+      <div class="src-item"><span class="src-item-label">ES90: Daten, 0–100, Antrieb</span><a class="src-item-link" href="https://insideevs.de/features/773131/elektroauto-neuheiten-jahr-2026/" target="_blank">insideevs.de 2026 Neuheiten</a><span class="src-item-note">ES90 ab 75k, 106 kWh, 350 kW, 670 km · RWD/AWD · ~4,7 s</span></div>
+      <div class="src-item"><span class="src-item-label">EX90 MY2026 (800V), Anhängelast</span><a class="src-item-link" href="https://www.autobild.de/artikel/elektroautos-laden-800-volt-22628751.html" target="_blank">autobild.de</a><span class="src-item-note">EX90 ab MY2026 800V, 250 kW · AWD · 2.250 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">EX90 AB-Reichweite (ADAC Wintertest)</span><a class="src-item-link" href="https://insideevs.de/news/785029/audi-a6avant-etron-winterreichweitentest-adac/" target="_blank">insideevs.de ADAC-Wintertest 2026</a><span class="src-item-note">EX90 im ADAC-Test: 360 km bei 0°C · 91.700 € · vorletzter Platz Effizienz</span></div>
+    </div>
+
+    <!-- POLESTAR -->
+    <div class="src-card">
+      <div class="src-card-title">Polestar 3 (MY2026) / Polestar 5</div>
+      <div class="src-item"><span class="src-item-label">Polestar 3 800V-Update: alle Daten</span><a class="src-item-link" href="https://www.electrive.net/2025/10/01/wie-der-volvo-ex90-auch-der-polestar-3-bekommt-ein-800-volt-upgrade/" target="_blank">electrive.net</a><span class="src-item-note">350 kW, 106 kWh, 680 PS, 635 km, 22 min · AWD/RWD · 0–100: 3,6 s (Performance)</span></div>
+      <div class="src-item"><span class="src-item-label">Polestar 3 Anhängelast, AC-Laden</span><a class="src-item-link" href="https://insideevs.de/features/743371/polestar-3-ubersicht-daten-preise/" target="_blank">insideevs.de Polestar 3</a><span class="src-item-note">2.200 kg Anhängelast · AC: 11 kW (Serie)</span></div>
+      <div class="src-item"><span class="src-item-label">Polestar 5: alle Daten</span><a class="src-item-link" href="https://www.autobild.de/artikel/neue-e-auto-modelle-mit-preis-und-marktstart-uebersicht-5777435.html" target="_blank">autobild.de</a><span class="src-item-note">ab 118.600 €, 884 PS, 670 km · 0–100: ~3,2 s · AWD · AC: 22 kW</span></div>
+    </div>
+
+    <!-- BMW iX3 -->
+    <div class="src-card">
+      <div class="src-card-title">BMW iX3 (Neue Klasse)</div>
+      <div class="src-item"><span class="src-item-label">Preis, Akku, DC, WLTP, 0–100, Antrieb</span><a class="src-item-link" href="https://www.autozeitung.de/neuer-bmw-ix3-2026-im-fahrbericht-208727.html" target="_blank">autozeitung.de Fahrbericht</a><span class="src-item-note">ab 68.900 €, 108 kWh, 400 kW, 805 km · 0–100: 4,9 s · AWD (50 xDrive)</span></div>
+      <div class="src-item"><span class="src-item-label">AC-Laden, Anhängelast</span><a class="src-item-link" href="https://en.wikipedia.org/wiki/BMW_iX3" target="_blank">Wikipedia BMW iX3</a><span class="src-item-note">AC: 11 kW / 22 kW Option · Anhängelast: 2.500 kg</span></div>
+      <div class="src-item"><span class="src-item-label">0–100, iX3 vs. GLC Vergleich</span><a class="src-item-link" href="https://www.autozeitung.de/bmw-ix3-mercedes-glc-eq-vergleich-fakten-209300.html" target="_blank">autozeitung.de Faktenvergleich</a><span class="src-item-note">4,9 s (50 xDrive) · 21 min DC · AC 11/22 kW</span></div>
+    </div>
+
+    <!-- ZEEKR -->
+    <div class="src-card">
+      <div class="src-card-title">Zeekr 7X / Zeekr 001</div>
+      <div class="src-item"><span class="src-item-label">7X: alle Daten inkl. 0–100, Anhängelast, Antrieb</span><a class="src-item-link" href="https://insideevs.de/news/780523/zeekr-7x-long-range-konkurrenzvergleich/" target="_blank">insideevs.de Vergleich</a><span class="src-item-note">7X: ab 54.990 €, 103,8 kWh netto, 360 kW, 615 km · AWD 0–100: 3,8 s · 2.000 kg Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">7X Wikipedia: Motorisierung, Akku</span><a class="src-item-link" href="https://en.wikipedia.org/wiki/Zeekr_7X" target="_blank">Wikipedia Zeekr 7X</a><span class="src-item-note">RWD: 310 kW / AWD: 475 kW (646 PS) · 75 kWh LFP oder 100 kWh Akku</span></div>
+      <div class="src-item"><span class="src-item-label">001: Preis, PS, WLTP, Antrieb</span><a class="src-item-link" href="https://ecomento.de/2025/12/01/zeekr-elektroautos-7x-001-und-x-sollen-ab-januar-2026-ausgeliefert-werden/" target="_blank">ecomento.de</a><span class="src-item-note">001: ab 59.990 €, 544 PS (AWD), 620 km (LR) · RWD/AWD · Anhängelast 1.000 kg</span></div>
+      <div class="src-item"><span class="src-item-label">Ladezeit DE real</span><a class="src-item-link" href="https://insideevs.de/news/780404/zeekr-deutschland-7x-001-x/" target="_blank">insideevs.de</a><span class="src-item-note">16 min für 100-kWh-Akku in DE bestätigt</span></div>
+    </div>
+
+    <!-- METHODISCHE QUELLEN -->
+    <div class="src-card">
+      <div class="src-card-title">Methodische Quellen &amp; Übersichten</div>
+      <div class="src-item"><span class="src-item-label">Ø Ladeleistung Methodik + Übersicht 95 Modelle</span><a class="src-item-link" href="https://adac.de/rund-ums-fahrzeug/elektromobilitaet/laden/schnellladen-langstrecke-ladekurven-2026/" target="_blank">ADAC Schnellladen Langstrecke 2026</a><span class="src-item-note">95 getestete Modelle · ADAC empfiehlt Ø kW als Vergleichswert</span></div>
+      <div class="src-item"><span class="src-item-label">ADAC Wintertest 2026 (AB-Reichweiten)</span><a class="src-item-link" href="https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/elektroauto-reichweite-im-winter-adac-test-2026/" target="_blank">ADAC Wintertest Jan. 2026</a><span class="src-item-note">14 Modelle bei 0°C/Autobahn: A6 441 km, Smart #5 ~380 km, Ioniq 5 ~335 km, EX90 360 km</span></div>
+      <div class="src-item"><span class="src-item-label">800V Modellübersicht</span><a class="src-item-link" href="https://insideevs.de/features/763929/elektroautos-800volt-modelluebersicht/" target="_blank">insideevs.de 800V-Liste</a><span class="src-item-note">Alle 800V-Modelle, AC-Laden, Ladegeschwindigkeiten</span></div>
+      <div class="src-item"><span class="src-item-label">Anhängelast-Ranking Elektroautos</span><a class="src-item-link" href="https://www.firmenauto.de/fahrzeuge/pkw/anhaengelasten-ab-1-800-kg-welche-e-autos-am-meisten-ziehen-e-mobilitaet-zugmaschine/" target="_blank">firmenauto.de Ranking</a><span class="src-item-note">Komplettes Ranking der E-Autos nach Anhängelast</span></div>
+      <div class="src-item"><span class="src-item-label">Ladekurven Vergleich km/min</span><a class="src-item-link" href="https://insideevs.de/news/767994/reichweite-nachladen:-die-besten-elektroautos/" target="_blank">insideevs.de km/min-Ranking</a><span class="src-item-note">Reichweite pro Minute Ladezeit aller 800V-Modelle</span></div>
+    </div>
+
+  </div>
 </div>
 
 <script>
-const cars = [
-  // Porsche
-  { brand:"Porsche", model:"Taycan (2025)", segment:"Limousine", preis:105000, ps:938, akku:97, dc:320, zeit:18, wltp:630, eff:3.77, kurve:5, kurveText:"Sehr flach", status:"Verfügbar" },
-  { brand:"Porsche", model:"Macan Electric", segment:"Kompakt-SUV", preis:83000, ps:639, akku:95, dc:270, zeit:21, wltp:641, eff:3.17, kurve:4, kurveText:"Flach", status:"Verfügbar" },
-  { brand:"Porsche", model:"Cayenne Electric", segment:"Groß-SUV", preis:144900, ps:1156, akku:113, dc:400, zeit:24, wltp:600, eff:3.30, kurve:4, kurveText:"Flach", status:"Neu" },
-  // Audi
-  { brand:"Audi", model:"e-tron GT", segment:"Limousine", preis:102000, ps:476, akku:97, dc:270, zeit:18, wltp:594, eff:3.77, kurve:4, kurveText:"Flach", status:"Verfügbar" },
-  { brand:"Audi", model:"RS e-tron GT Performance", segment:"Limousine", preis:130000, ps:925, akku:97, dc:320, zeit:18, wltp:598, eff:3.77, kurve:5, kurveText:"Sehr flach", status:"Verfügbar" },
-  { brand:"Audi", model:"Q6 e-tron", segment:"Kompakt-SUV", preis:64000, ps:258, akku:83, dc:270, zeit:21, wltp:641, eff:2.77, kurve:4, kurveText:"Flach", status:"Verfügbar" },
-  { brand:"Audi", model:"SQ6 e-tron", segment:"Kompakt-SUV", preis:87000, ps:516, akku:99, dc:270, zeit:21, wltp:598, eff:3.30, kurve:4, kurveText:"Flach", status:"Verfügbar" },
-  { brand:"Audi", model:"A6 e-tron", segment:"Limousine", preis:74000, ps:367, akku:83, dc:270, zeit:21, wltp:750, eff:2.77, kurve:4, kurveText:"Flach", status:"Verfügbar" },
-  // Hyundai
-  { brand:"Hyundai", model:"Ioniq 5", segment:"Kompakt-SUV", preis:44000, ps:228, akku:84, dc:258, zeit:18, wltp:587, eff:3.27, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Hyundai", model:"Ioniq 5 N", segment:"Kompakt-SUV", preis:67000, ps:641, akku:84, dc:258, zeit:18, wltp:449, eff:3.27, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Hyundai", model:"Ioniq 6", segment:"Limousine", preis:46000, ps:239, akku:84, dc:258, zeit:18, wltp:614, eff:3.27, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Hyundai", model:"Ioniq 9", segment:"Groß-SUV", preis:69000, ps:303, akku:110, dc:350, zeit:24, wltp:620, eff:3.21, kurve:4, kurveText:"Gut", status:"Neu" },
-  // Kia
-  { brand:"Kia", model:"EV6", segment:"Kompakt-SUV", preis:44000, ps:228, akku:84, dc:258, zeit:18, wltp:582, eff:3.27, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Kia", model:"EV6 GT", segment:"Kompakt-SUV", preis:71000, ps:645, akku:84, dc:258, zeit:18, wltp:440, eff:3.27, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Kia", model:"EV9", segment:"Groß-SUV", preis:78000, ps:384, akku:100, dc:233, zeit:24, wltp:563, eff:2.92, kurve:3, kurveText:"Mittel", status:"Verfügbar" },
-  // Genesis
-  { brand:"Genesis", model:"GV60 Performance", segment:"Kompakt-SUV", preis:56000, ps:484, akku:84, dc:232, zeit:18, wltp:561, eff:3.27, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Genesis", model:"Electrified GV70", segment:"Kompakt-SUV", preis:71000, ps:490, akku:80, dc:240, zeit:19, wltp:479, eff:2.95, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Genesis", model:"Electrified G80", segment:"Limousine", preis:96000, ps:272, akku:87, dc:200, zeit:25, wltp:570, eff:2.44, kurve:3, kurveText:"Mittel", status:"Verfügbar" },
-  // Xpeng
-  { brand:"Xpeng", model:"G6", segment:"Kompakt-SUV", preis:45000, ps:313, akku:80, dc:280, zeit:20, wltp:570, eff:2.80, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Xpeng", model:"G9", segment:"Mittel-SUV", preis:55000, ps:373, akku:98, dc:280, zeit:20, wltp:610, eff:3.43, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  // Lotus
-  { brand:"Lotus", model:"Emeya 900", segment:"Limousine", preis:110000, ps:918, akku:102, dc:350, zeit:18, wltp:610, eff:3.97, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  { brand:"Lotus", model:"Eletre R", segment:"Groß-SUV", preis:96000, ps:918, akku:112, dc:350, zeit:20, wltp:600, eff:3.92, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  // Smart
-  { brand:"Smart", model:"#5 (800V-Varianten)", segment:"Mittel-SUV", preis:52000, ps:646, akku:94, dc:400, zeit:16, wltp:560, eff:4.11, kurve:5, kurveText:"Sehr flach", status:"Neu" },
-  // Mercedes
-  { brand:"Mercedes", model:"CLA EQ", segment:"Limousine", preis:55000, ps:326, akku:85, dc:320, zeit:22, wltp:750, eff:2.70, kurve:4, kurveText:"Gut", status:"Neu" },
-  { brand:"Mercedes", model:"GLB EQ", segment:"Kompakt-SUV", preis:60000, ps:352, akku:85, dc:320, zeit:22, wltp:631, eff:2.70, kurve:4, kurveText:"Gut", status:"Neu" },
-  { brand:"Mercedes", model:"GLC EQ", segment:"Mittel-SUV", preis:70000, ps:350, akku:85, dc:320, zeit:22, wltp:715, eff:2.70, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  // Lucid
-  { brand:"Lucid", model:"Air (924V)", segment:"Limousine", preis:120000, ps:1234, akku:112, dc:300, zeit:22, wltp:960, eff:3.56, kurve:4, kurveText:"Gut", status:"Verfügbar" },
-  // Volvo
-  { brand:"Volvo", model:"ES90", segment:"Limousine", preis:75000, ps:408, akku:106, dc:350, zeit:21, wltp:670, eff:3.53, kurve:4, kurveText:"Gut", status:"Neu" },
-  { brand:"Volvo", model:"EX90 (MY2026)", segment:"Groß-SUV", preis:109000, ps:517, akku:107, dc:250, zeit:25, wltp:610, eff:3.00, kurve:3, kurveText:"Mittel", status:"Neu" },
-  // Polestar
-  { brand:"Polestar", model:"3 (MY2026)", segment:"Groß-SUV", preis:74000, ps:680, akku:106, dc:350, zeit:22, wltp:635, eff:3.37, kurve:4, kurveText:"Gut", status:"Neu" },
-  { brand:"Polestar", model:"5", segment:"Limousine", preis:118600, ps:884, akku:100, dc:350, zeit:22, wltp:670, eff:3.18, kurve:4, kurveText:"Gut", status:"Neu" },
-  // BMW
-  { brand:"BMW", model:"iX3 (Neue Klasse)", segment:"Mittel-SUV", preis:68900, ps:470, akku:108, dc:400, zeit:21, wltp:805, eff:3.60, kurve:5, kurveText:"Sehr flach", status:"Neu" },
-  // Zeekr
-  { brand:"Zeekr", model:"7X", segment:"Mittel-SUV", preis:54990, ps:646, akku:100, dc:360, zeit:16, wltp:615, eff:4.38, kurve:5, kurveText:"Sehr flach", status:"Neu" },
-  { brand:"Zeekr", model:"001", segment:"Limousine", preis:59990, ps:646, akku:100, dc:360, zeit:16, wltp:600, eff:4.38, kurve:5, kurveText:"Sehr flach", status:"Neu" },
+// sprint = 0-100 km/h stärkste Variante (s)
+// ac = AC Ladeleistung kW (standard / optional)
+// anhang = Anhängelast kg (0 = keine AHK möglich)
+// abRange = Autobahn-Reichweite ~130 km/h (km), null = geschätzt mit ~
+// antrieb = 'RWD'|'AWD'|'FWD'|'RWD/AWD' (verfügbare Optionen)
+const CARS = [
+  { brand:"Porsche",  model:"Taycan",                  seg:"l", preis:102600, preisMax:241100, ps:1108, akku:97,  dc:320, dcRealPeak:296,  dcRealSrc:"ADAC Ecotest · Peak 296 kW · hält ~300 kW bis 60% SoC",  zeit:18, wltp:687, kurve:5, kurveText:"Sehr flach",  status:"Verfügbar", sprint:2.0,  ac:"11 kW",    anhang:1000,  abRange:480,  abEst:false, antrieb:"RWD/AWD" },
+  { brand:"Porsche",  model:"Macan Electric",          seg:"k", preis:83000,  preisMax:130000, ps:639,  akku:95,  dc:270, dcRealPeak:265,  dcRealSrc:"ams-Test · real 22 min",                                  zeit:21, wltp:641, kurve:4, kurveText:"Flach",        status:"Verfügbar", sprint:3.3,  ac:"11 kW",    anhang:2500,  abRange:420,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Porsche",  model:"Cayenne Electric",        seg:"g", preis:144900, preisMax:210000, ps:1156, akku:113, dc:400, dcRealPeak:null, dcRealSrc:null,                                                        zeit:24, wltp:600, kurve:4, kurveText:"Flach",        status:"Neu",       sprint:2.5,  ac:"11 kW",    anhang:3500,  abRange:400,  abEst:true,  antrieb:"AWD" },
+  { brand:"Audi",     model:"e-tron GT",               seg:"l", preis:102000, preisMax:155000, ps:476,  akku:97,  dc:270, dcRealPeak:260,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:594, kurve:4, kurveText:"Flach",        status:"Verfügbar", sprint:3.3,  ac:"11 kW",    anhang:0,     abRange:440,  abEst:true,  antrieb:"AWD" },
+  { brand:"Audi",     model:"RS e-tron GT Perf.",      seg:"l", preis:130000, preisMax:165000, ps:925,  akku:97,  dc:320, dcRealPeak:265,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:598, kurve:5, kurveText:"Sehr flach",  status:"Verfügbar", sprint:2.5,  ac:"11 kW",    anhang:0,     abRange:440,  abEst:true,  antrieb:"AWD" },
+  { brand:"Audi",     model:"Q6 e-tron",               seg:"k", preis:63500,  preisMax:100000, ps:326,  akku:95,  dc:270, dcRealPeak:250,  dcRealSrc:"ams-Test · real 24 min statt 21",                         zeit:21, wltp:661, kurve:4, kurveText:"Flach",        status:"Verfügbar", sprint:6.6,  ac:"11/22 kW", anhang:2000,  abRange:500,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Audi",     model:"SQ6 e-tron",              seg:"k", preis:93800,  preisMax:115000, ps:517,  akku:95,  dc:270, dcRealPeak:250,  dcRealSrc:"ams-Test ~",                                              zeit:21, wltp:604, kurve:4, kurveText:"Flach",        status:"Verfügbar", sprint:4.4,  ac:"11/22 kW", anhang:2400,  abRange:460,  abEst:true,  antrieb:"AWD" },
+  { brand:"Audi",     model:"A6 e-tron Perf.",         seg:"l", preis:74000,  preisMax:108000, ps:551,  akku:94,  dc:270, dcRealPeak:265,  dcRealSrc:"ams-Test · real 24 min statt 21",                         zeit:21, wltp:750, kurve:4, kurveText:"Flach",        status:"Verfügbar", sprint:3.9,  ac:"11/22 kW", anhang:2100,  abRange:540,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Hyundai",  model:"Ioniq 5",                 seg:"k", preis:44900,  preisMax:66000,  ps:229,  akku:80,  dc:260, dcRealPeak:255,  dcRealSrc:"ADAC Ecotest · Peak 255 kW · Ø >200 kW bestätigt",       zeit:18, wltp:570, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:5.1,  ac:"11 kW",    anhang:1600,  abRange:385,  abEst:false, antrieb:"RWD/AWD" },
+  { brand:"Hyundai",  model:"Ioniq 5 N",               seg:"k", preis:74900,  preisMax:85000,  ps:609,  akku:80,  dc:240, dcRealPeak:235,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:448, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:3.4,  ac:"11 kW",    anhang:1600,  abRange:320,  abEst:true,  antrieb:"AWD" },
+  { brand:"Hyundai",  model:"Ioniq 6",                 seg:"l", preis:46000,  preisMax:62000,  ps:239,  akku:80,  dc:260, dcRealPeak:255,  dcRealSrc:"ADAC Ecotest gemessen",                                   zeit:18, wltp:614, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:5.1,  ac:"11 kW",    anhang:1500,  abRange:430,  abEst:false, antrieb:"RWD/AWD" },
+  { brand:"Hyundai",  model:"Ioniq 9",                 seg:"g", preis:69000,  preisMax:88000,  ps:303,  akku:106, dc:350, dcRealPeak:null, dcRealSrc:null,                                                        zeit:24, wltp:620, kurve:3, kurveText:"Gut",          status:"Neu",       sprint:5.0,  ac:"11 kW",    anhang:2500,  abRange:420,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Kia",      model:"EV6",                     seg:"k", preis:44000,  preisMax:57000,  ps:228,  akku:80,  dc:258, dcRealPeak:250,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:582, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:5.1,  ac:"11 kW",    anhang:1800,  abRange:390,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Kia",      model:"EV6 GT",                  seg:"k", preis:71000,  preisMax:80000,  ps:645,  akku:80,  dc:240, dcRealPeak:235,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:440, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:3.5,  ac:"11 kW",    anhang:1800,  abRange:310,  abEst:true,  antrieb:"AWD" },
+  { brand:"Kia",      model:"EV9",                     seg:"g", preis:78000,  preisMax:105000, ps:384,  akku:100, dc:233, dcRealPeak:220,  dcRealSrc:"ams-Test ~",                                              zeit:24, wltp:563, kurve:2, kurveText:"Mittel",       status:"Verfügbar", sprint:5.3,  ac:"11 kW",    anhang:2500,  abRange:380,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Genesis",  model:"GV60 Performance",        seg:"k", preis:56000,  preisMax:72000,  ps:484,  akku:80,  dc:232, dcRealPeak:225,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:561, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:4.0,  ac:"11 kW",    anhang:1600,  abRange:370,  abEst:true,  antrieb:"AWD" },
+  { brand:"Genesis",  model:"Electrified GV70",        seg:"k", preis:71000,  preisMax:90000,  ps:490,  akku:80,  dc:240, dcRealPeak:230,  dcRealSrc:"ams-Test ~",                                              zeit:19, wltp:479, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:4.2,  ac:"11 kW",    anhang:1800,  abRange:330,  abEst:true,  antrieb:"AWD" },
+  { brand:"Genesis",  model:"Electrified G80",         seg:"l", preis:96000,  preisMax:115000, ps:272,  akku:87,  dc:200, dcRealPeak:190,  dcRealSrc:"ams-Test ~",                                              zeit:25, wltp:570, kurve:2, kurveText:"Mittel",       status:"Verfügbar", sprint:4.9,  ac:"11 kW",    anhang:1500,  abRange:370,  abEst:true,  antrieb:"AWD" },
+  { brand:"Xpeng",    model:"G6",                      seg:"k", preis:45000,  preisMax:56000,  ps:313,  akku:80,  dc:280, dcRealPeak:275,  dcRealSrc:"ams-Test · 20 min bestätigt",                             zeit:20, wltp:570, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:3.9,  ac:"11 kW",    anhang:1500,  abRange:390,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Xpeng",    model:"G9",                      seg:"m", preis:55000,  preisMax:70000,  ps:373,  akku:98,  dc:280, dcRealPeak:275,  dcRealSrc:"ams-Test · 20 min bestätigt",                             zeit:20, wltp:585, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:3.9,  ac:"11 kW",    anhang:2000,  abRange:410,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Lotus",    model:"Emeya 900",               seg:"l", preis:110000, preisMax:135000, ps:918,  akku:102, dc:350, dcRealPeak:330,  dcRealSrc:"ams-Test ~",                                              zeit:18, wltp:610, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:2.78, ac:"11 kW",    anhang:2250,  abRange:420,  abEst:true,  antrieb:"AWD" },
+  { brand:"Lotus",    model:"Eletre R",                seg:"g", preis:96000,  preisMax:122000, ps:918,  akku:112, dc:350, dcRealPeak:330,  dcRealSrc:"ams-Test ~",                                              zeit:20, wltp:600, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:2.95, ac:"11 kW",    anhang:2250,  abRange:400,  abEst:true,  antrieb:"AWD" },
+  { brand:"Smart",    model:"#5 (Dual Motor+)",        seg:"m", preis:52000,  preisMax:66000,  ps:646,  akku:94,  dc:400, dcRealPeak:300,  dcRealSrc:"ADAC Wintertest · Säule max. 300 kW · 17:16 min",         zeit:16, wltp:560, kurve:5, kurveText:"Sehr flach",  status:"Neu",       sprint:3.8,  ac:"11 kW",    anhang:2000,  abRange:380,  abEst:true,  antrieb:"AWD" },
+  { brand:"Mercedes", model:"CLA EQ",                  seg:"l", preis:55000,  preisMax:82000,  ps:326,  akku:85,  dc:320, dcRealPeak:null, dcRealSrc:null,                                                        zeit:22, wltp:750, kurve:4, kurveText:"Flach",        status:"Neu",       sprint:4.9,  ac:"11/22 kW", anhang:1800,  abRange:520,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Mercedes", model:"GLB EQ",                  seg:"k", preis:60000,  preisMax:82000,  ps:352,  akku:85,  dc:320, dcRealPeak:null, dcRealSrc:null,                                                        zeit:22, wltp:631, kurve:4, kurveText:"Flach",        status:"Neu",       sprint:5.0,  ac:"11/22 kW", anhang:1800,  abRange:420,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Mercedes", model:"GLC EQ",                  seg:"m", preis:70000,  preisMax:92000,  ps:350,  akku:85,  dc:320, dcRealPeak:null, dcRealSrc:null,                                                        zeit:22, wltp:715, kurve:4, kurveText:"Flach",        status:"Verfügbar", sprint:4.3,  ac:"11/22 kW", anhang:2100,  abRange:460,  abEst:true,  antrieb:"AWD" },
+  { brand:"Lucid",    model:"Air (924V)",              seg:"l", preis:120000, preisMax:185000, ps:1234, akku:112, dc:300, dcRealPeak:290,  dcRealSrc:"ams-Test ~",                                              zeit:22, wltp:960, kurve:3, kurveText:"Gut",          status:"Verfügbar", sprint:1.89, ac:"22 kW",    anhang:2268,  abRange:650,  abEst:true,  antrieb:"AWD" },
+  { brand:"Volvo",    model:"ES90",                    seg:"l", preis:75000,  preisMax:102000, ps:408,  akku:106, dc:350, dcRealPeak:null, dcRealSrc:null,                                                        zeit:21, wltp:670, kurve:3, kurveText:"Gut",          status:"Neu",       sprint:4.7,  ac:"11 kW",    anhang:2200,  abRange:460,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Volvo",    model:"EX90 (MY2026)",           seg:"g", preis:109000, preisMax:138000, ps:517,  akku:107, dc:250, dcRealPeak:null, dcRealSrc:null,                                                        zeit:25, wltp:610, kurve:2, kurveText:"Mittel",       status:"Neu",       sprint:4.9,  ac:"11 kW",    anhang:2250,  abRange:400,  abEst:true,  antrieb:"AWD" },
+  { brand:"Polestar", model:"3 (MY2026)",              seg:"g", preis:74000,  preisMax:98000,  ps:680,  akku:106, dc:350, dcRealPeak:null, dcRealSrc:null,                                                        zeit:22, wltp:635, kurve:3, kurveText:"Gut",          status:"Neu",       sprint:3.6,  ac:"11 kW",    anhang:2200,  abRange:430,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Polestar", model:"5",                       seg:"l", preis:118600, preisMax:145000, ps:884,  akku:100, dc:350, dcRealPeak:null, dcRealSrc:null,                                                        zeit:22, wltp:670, kurve:3, kurveText:"Gut",          status:"Neu",       sprint:3.2,  ac:"22 kW",    anhang:null,  abRange:460,  abEst:true,  antrieb:"AWD" },
+  { brand:"BMW",      model:"iX3 (Neue Klasse)",       seg:"m", preis:68900,  preisMax:92000,  ps:470,  akku:108, dc:400, dcRealPeak:null, dcRealSrc:null,                                                        zeit:21, wltp:805, kurve:5, kurveText:"Sehr flach",  status:"Neu",       sprint:4.9,  ac:"11/22 kW", anhang:2500,  abRange:550,  abEst:true,  antrieb:"AWD" },
+  { brand:"Zeekr",    model:"7X",                      seg:"m", preis:54990,  preisMax:76000,  ps:646,  akku:104, dc:360, dcRealPeak:null, dcRealSrc:"16 min in DE real · 103,8 kWh netto (insideevs)",          zeit:16, wltp:615, kurve:5, kurveText:"Sehr flach",  status:"Neu",       sprint:3.8,  ac:"11 kW",    anhang:2000,  abRange:420,  abEst:true,  antrieb:"RWD/AWD" },
+  { brand:"Zeekr",    model:"001",                     seg:"l", preis:59990,  preisMax:80000,  ps:544,  akku:100, dc:360, dcRealPeak:null, dcRealSrc:null,                                                        zeit:16, wltp:620, kurve:5, kurveText:"Sehr flach",  status:"Neu",       sprint:3.8,  ac:"11 kW",    anhang:1000,  abRange:420,  abEst:true,  antrieb:"RWD/AWD" },
 ];
 
-// Format helpers
-function fmtPreis(v) {
-  return (v/1000).toFixed(0) + ".000 €";
-}
-function fmtEff(v) {
-  return v.toFixed(2) + " kWh/min";
-}
-function psClass(v) {
-  if (v >= 900) return 'ps-insane';
-  if (v >= 500) return 'ps-high';
-  if (v >= 300) return 'ps-mid';
-  return 'ps-low';
-}
-function dcClass(v) {
-  if (v >= 400) return 'dc-hyper';
-  if (v >= 320) return 'dc-ultra';
-  if (v >= 250) return 'dc-fast';
-  return 'dc-ok';
-}
-function effClass(v) {
-  if (v >= 4.0) return 'eff-best';
-  if (v >= 3.5) return 'eff-great';
-  if (v >= 3.0) return 'eff-good';
-  return 'eff-ok';
-}
-function zeitClass(v) {
-  if (v <= 18) return 'lt-fast';
-  if (v <= 22) return 'lt-ok';
-  return 'lt-slow';
-}
-function segClass(s) {
-  if (s === 'Limousine') return 'seg-limousine';
-  if (s === 'Kompakt-SUV') return 'seg-kompakt';
-  if (s === 'Mittel-SUV') return 'seg-mittel';
-  if (s === 'Groß-SUV') return 'seg-gross';
-  return '';
-}
-function statusClass(s) {
-  if (s === 'Verfügbar') return 'status-now';
-  if (s === 'Neu') return 'status-new';
-  return 'status-soon';
-}
-function starHTML(n) {
-  let h = '';
-  for (let i=1; i<=5; i++) {
-    h += `<span class="${i<=n?'star-on':'star-off'}">★</span>`;
-  }
-  return h;
-}
-function wltpBarWidth(v) {
-  return Math.round((v / 980) * 80);
-}
+CARS.forEach(c => {
+  c.dcAvg = Math.round((c.akku * 0.7 * 60) / c.zeit / 5) * 5;
+});
 
-// Sort state
-let sortCol = 'brand';
-let sortDir = 1;
+const ALL_COLS = [
+  { id:'brand',   label:'Hersteller',        sortKey:'brand'    },
+  { id:'model',   label:'Modell',            sortKey:'model'    },
+  { id:'segment', label:'Segment',           sortKey:'seg'      },
+  { id:'antrieb', label:'Antrieb',           sortKey:'antrieb'  },
+  { id:'ps',      label:'Max. PS',           sortKey:'ps'       },
+  { id:'sprint',  label:'0–100 km/h',        sortKey:'sprint'   },
+  { id:'preis',   label:'Preis (ab → ca.)',  sortKey:'preis'    },
+  { id:'akku',    label:'Akku netto',        sortKey:'akku'     },
+  { id:'ac',      label:'AC Laden',          sortKey:'ac'       },
+  { id:'dc',      label:'Peak kW (Herst.)',  sortKey:'dc'       },
+  { id:'dcReal',  label:'Real Ø → Peak',     sortKey:'dcAvg'    },
+  { id:'zeit',    label:'10–80%',            sortKey:'zeit'     },
+  { id:'wltp',    label:'WLTP km',           sortKey:'wltp'     },
+  { id:'abRange', label:'AB ~130 km/h',      sortKey:'abRange'  },
+  { id:'anhang',  label:'Anhängelast',       sortKey:'anhang'   },
+  { id:'kurve',   label:'Ladekurve',         sortKey:'kurve'    },
+  { id:'status',  label:'Status',            sortKey:'status'   },
+];
 
-// Filters
-let filterSegment = '';
-let filterPrice = 160000;
-let filterDC = 0;
-let filterStatus = '';
+let colOrder = ALL_COLS.map(c => c.id);
+let sortKey = 'brand', sortDir = 1;
+let fSeg='', fPrice=160000, fDC=0, fStatus='';
+let dragSrcIdx = null;
 
-function getFilteredSorted() {
-  let data = cars.filter(c => {
-    if (filterSegment && c.segment !== filterSegment) return false;
-    if (c.preis > filterPrice) return false;
-    if (c.dc < filterDC) return false;
-    if (filterStatus) {
-      if (filterStatus === 'Verfügbar' && c.status !== 'Verfügbar') return false;
-      if (filterStatus === 'Neu' && c.status !== 'Neu') return false;
-      if (filterStatus === 'Bald' && c.status !== 'Bald') return false;
+function cellHtml(colId, c) {
+  switch (colId) {
+    case 'antrieb': {
+      const map={'AWD':'ant-awd','RWD':'ant-rwd','FWD':'ant-fwd','RWD/AWD':'ant-awd'};
+      const display = c.antrieb === 'RWD/AWD' ? 'RWD / AWD' : c.antrieb;
+      return `<span class="ant-badge ${map[c.antrieb]||'ant-awd'}">${display}</span>`;
     }
+    case 'sprint': {
+      const s = c.sprint;
+      const col = s<=2.5?'#ff6b6b':s<=3.5?'#f0a500':s<=5.0?'var(--text)':'var(--text2)';
+      return `<span class="sprint-val" style="color:${col}">${s.toFixed(1)}</span><span class="nu">s</span>`;
+    }
+    case 'ac':
+      return `<span class="num" style="color:var(--text2)">${c.ac}</span>`;
+    case 'abRange': {
+      if (!c.abRange) return `<span class="num r-na">k.A.</span>`;
+      const cls = c.abEst ? 'ab-est' : 'ab-val';
+      const pre = c.abEst ? '~' : '';
+      return `<span class="${cls}">${pre}${c.abRange}</span><span class="nu">km</span>`;
+    }
+    case 'anhang': {
+      if (c.anhang === 0) return `<span class="num" style="color:var(--text3)">keine</span>`;
+      if (c.anhang === null) return `<span class="num r-na">k.A.</span>`;
+      const col = c.anhang>=2500?'var(--accent)':c.anhang>=2000?'#f0a500':'var(--text2)';
+      return `<span class="num" style="color:${col}">${c.anhang.toLocaleString('de')}</span><span class="nu">kg</span>`;
+    }
+    case 'brand':  return `<span class="brand-tag">${c.brand}</span>`;
+    case 'model':  return `<span class="model-text">${c.model}</span>`;
+    case 'segment': {
+      const map={l:'seg-l',k:'seg-k',m:'seg-m',g:'seg-g'};
+      const lbl={l:'Limousine',k:'Kompakt-SUV',m:'Mittel-SUV',g:'Groß-SUV'};
+      return `<span class="seg-badge ${map[c.seg]}">${lbl[c.seg]}</span>`;
+    }
+    case 'ps': {
+      const cls=c.ps>=900?'ps-x':c.ps>=500?'ps-h':c.ps>=300?'ps-m':'ps-l';
+      return `<span class="num ${cls}">${c.ps}</span><span class="nu">PS</span>`;
+    }
+    case 'preis':
+      return `<div class="price-range"><span class="price-from">${Math.round(c.preis/1000)}k €</span><span class="price-to">bis ca. ${Math.round(c.preisMax/1000)}k €</span></div>`;
+    case 'akku':
+      return `<span class="num">${c.akku}</span><span class="nu">kWh</span>`;
+    case 'dc': {
+      const cls=c.dc>=400?'dc-hyper':c.dc>=320?'dc-ultra':c.dc>=250?'dc-fast':'dc-ok';
+      return `<span class="num ${cls}">${c.dc}</span><span class="nu">kW</span>`;
+    }
+    case 'dcReal': {
+      const avgCls = c.dcRealPeak ? 'r-avg-tested' : 'r-avg-calc';
+      const avgRow = `<span class="range-row"><span class="range-label">Ø</span><span class="num ${avgCls}">~${c.dcAvg} kW</span></span>`;
+      let peakRow;
+      if (c.dcRealPeak) {
+        const r=c.dcRealPeak/c.dc;
+        const pcls=r>=0.95?'r-peak-g':r>=0.8?'r-peak-y':'r-peak-r';
+        const d=c.dcRealPeak-c.dc;
+        const ds=`<span style="font-size:10px;color:${d<0?'#ff6b6b':'var(--accent)'}">(${d>0?'+':''}${d})</span>`;
+        peakRow=`<span class="range-row"><span class="range-label">Peak</span><span class="num ${pcls}">${c.dcRealPeak} kW ${ds}</span></span>`;
+      } else {
+        peakRow=`<span class="range-row"><span class="range-label">Peak</span><span class="num r-na">—</span></span>`;
+      }
+      const srcLabel = c.dcRealPeak ? '⬡ Test' : c.dcRealSrc ? '⬡ Teil-Info' : 'kein Test';
+      const srcTitle = c.dcRealSrc || 'Kein unabhängiger Praxistest verfügbar';
+      return `<div class="range-cell">${avgRow}${peakRow}<span class="r-src" title="${srcTitle}">${srcLabel}</span></div>`;
+    }
+    case 'zeit': {
+      const cls=c.zeit<=18?'lt-fast':c.zeit<=22?'lt-ok':'lt-slow';
+      return `<span class="num ${cls}">${c.zeit} min</span>`;
+    }
+    case 'wltp': {
+      const w=Math.round((c.wltp/980)*80);
+      return `<div class="wltp-wrap"><span class="num" style="min-width:36px">${c.wltp}</span><div class="wltp-bar" style="width:${w}px"></div><span class="nu">km</span></div>`;
+    }
+    case 'kurve': {
+      let s=''; for(let i=1;i<=5;i++) s+=`<span class="${i<=c.kurve?'s-on':'s-off'}">★</span>`;
+      return `<div class="kurve-stars">${s}</div><div class="kurve-label">${c.kurveText}</div>`;
+    }
+    case 'status':
+      return `<span class="status ${c.status==='Verfügbar'?'s-now':'s-new'}">${c.status}</span>`;
+    default: return '';
+  }
+}
+
+function renderAll() { renderHeader(); renderRows(); }
+
+function renderHeader() {
+  const row=document.getElementById('headerRow');
+  row.innerHTML='';
+  colOrder.forEach((colId,idx)=>{
+    const col=ALL_COLS.find(c=>c.id===colId);
+    const isSorted=sortKey===col.sortKey;
+    const th=document.createElement('th');
+    if(isSorted) th.classList.add('sorted');
+    th.innerHTML=`<div class="th-inner"><span class="drag-handle" title="Spalte verschieben">⠿</span><span class="th-label">${col.label}</span><span class="sa">${isSorted?(sortDir>0?'↑':'↓'):'↕'}</span></div>`;
+    th.querySelector('.th-label').addEventListener('click',()=>{if(sortKey===col.sortKey)sortDir*=-1;else{sortKey=col.sortKey;sortDir=1;}renderAll();});
+    th.querySelector('.sa').addEventListener('click',()=>{if(sortKey===col.sortKey)sortDir*=-1;else{sortKey=col.sortKey;sortDir=1;}renderAll();});
+    th.querySelector('.drag-handle').addEventListener('mousedown',()=>{th.setAttribute('draggable','true');});
+    document.addEventListener('mouseup',()=>{th.removeAttribute('draggable');},{once:true});
+    th.addEventListener('dragstart',e=>{dragSrcIdx=idx;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(idx));setTimeout(()=>th.classList.add('dragging'),0);});
+    th.addEventListener('dragend',()=>{th.classList.remove('dragging');th.removeAttribute('draggable');});
+    th.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='move';document.querySelectorAll('#headerRow th').forEach(t=>t.classList.remove('drag-over'));if(dragSrcIdx!==idx)th.classList.add('drag-over');});
+    th.addEventListener('dragleave',()=>th.classList.remove('drag-over'));
+    th.addEventListener('drop',e=>{e.preventDefault();th.classList.remove('drag-over');if(dragSrcIdx===null||dragSrcIdx===idx)return;const moved=colOrder.splice(dragSrcIdx,1)[0];colOrder.splice(idx,0,moved);dragSrcIdx=null;renderAll();});
+    row.appendChild(th);
+  });
+}
+
+function renderRows() {
+  let data=CARS.filter(c=>{
+    if(fSeg&&c.seg!==fSeg) return false;
+    if(c.preis>fPrice) return false;
+    if(c.dc<fDC) return false;
+    if(fStatus&&c.status!==fStatus) return false;
     return true;
   });
-  data.sort((a,b) => {
-    let av = a[sortCol], bv = b[sortCol];
-    if (typeof av === 'string') return sortDir * av.localeCompare(bv);
-    return sortDir * (av - bv);
+  data.sort((a,b)=>{
+    let av=a[sortKey],bv=b[sortKey];
+    if(av===null&&bv===null)return 0;
+    if(av===null)return sortDir;
+    if(bv===null)return -sortDir;
+    if(typeof av==='string')return sortDir*av.localeCompare(bv);
+    return sortDir*(av-bv);
   });
-  return data;
-}
-
-function render() {
-  const data = getFilteredSorted();
-  const tbody = document.getElementById('tableBody');
-  tbody.innerHTML = '';
-  document.getElementById('noResults').style.display = data.length ? 'none' : 'block';
-  document.getElementById('rowCount').textContent = data.length;
-
-  data.forEach(c => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td class="model-cell">
-        <div class="brand">${c.brand}</div>
-        <div class="model-name">${c.model}</div>
-      </td>
-      <td><span class="seg-badge ${segClass(c.segment)}">${c.segment}</span></td>
-      <td class="num">
-        <span class="price-val">${fmtPreis(c.preis)}</span>
-      </td>
-      <td class="num">
-        <span class="${psClass(c.ps)}">${c.ps}</span>
-        <span class="num-unit">PS</span>
-      </td>
-      <td class="num">
-        <span>${c.akku}</span>
-        <span class="num-unit">kWh</span>
-      </td>
-      <td class="num">
-        <span class="${dcClass(c.dc)}">${c.dc}</span>
-        <span class="num-unit">kW</span>
-      </td>
-      <td class="num">
-        <span class="${zeitClass(c.zeit)}">${c.zeit} min</span>
-      </td>
-      <td>
-        <div class="wltp-bar-wrap">
-          <div class="wltp-val num">${c.wltp}</div>
-          <div class="wltp-bar" style="width:${wltpBarWidth(c.wltp)}px"></div>
-          <span class="num-unit">km</span>
-        </div>
-      </td>
-      <td class="num">
-        <span class="${effClass(c.eff)}">${fmtEff(c.eff)}</span>
-      </td>
-      <td>
-        <div class="kurve-stars">${starHTML(c.kurve)}</div>
-        <div class="kurve-label">${c.kurveText}</div>
-      </td>
-      <td><span class="status ${statusClass(c.status)}">${c.status}</span></td>
-    `;
+  document.getElementById('noResults').style.display=data.length?'none':'block';
+  document.getElementById('rowCount').textContent=data.length;
+  const tbody=document.getElementById('tableBody');
+  tbody.innerHTML='';
+  data.forEach(car=>{
+    const tr=document.createElement('tr');
+    colOrder.forEach(colId=>{const td=document.createElement('td');td.innerHTML=cellHtml(colId,car);tr.appendChild(td);});
     tbody.appendChild(tr);
   });
 }
 
-// Column sort
-document.querySelectorAll('th[data-col]').forEach(th => {
-  th.addEventListener('click', () => {
-    const col = th.dataset.col;
-    if (sortCol === col) sortDir *= -1;
-    else { sortCol = col; sortDir = 1; }
-    document.querySelectorAll('th').forEach(t => {
-      t.classList.remove('sorted');
-      const arr = t.querySelector('.sort-arrow');
-      if (arr) arr.textContent = '↕';
-    });
-    th.classList.add('sorted');
-    const arr = th.querySelector('.sort-arrow');
-    if (arr) arr.textContent = sortDir > 0 ? '↑' : '↓';
-    render();
-  });
-});
+document.getElementById('filterSegment').addEventListener('change',e=>{fSeg=e.target.value;renderRows();});
+document.getElementById('filterStatus') .addEventListener('change',e=>{fStatus=e.target.value;renderRows();});
+document.getElementById('filterPrice')  .addEventListener('input', e=>{fPrice=parseInt(e.target.value);document.getElementById('priceVal').textContent=fPrice>=160000?'alle':Math.round(fPrice/1000)+'k €';renderRows();});
+document.getElementById('filterDC')     .addEventListener('input', e=>{fDC=parseInt(e.target.value);document.getElementById('dcVal').textContent=fDC<=0?'alle':'≥'+fDC+' kW';renderRows();});
+document.getElementById('resetCols').addEventListener('click',()=>{colOrder=ALL_COLS.map(c=>c.id);sortKey='brand';sortDir=1;renderAll();});
 
-// Filters
-document.getElementById('filterSegment').addEventListener('change', e => {
-  filterSegment = e.target.value; render();
-});
-document.getElementById('filterStatus').addEventListener('change', e => {
-  filterStatus = e.target.value; render();
-});
-document.getElementById('filterPrice').addEventListener('input', e => {
-  filterPrice = parseInt(e.target.value);
-  document.getElementById('priceVal').textContent = filterPrice >= 160000 ? 'alle' : (filterPrice/1000).toFixed(0) + '.000 €';
-  render();
-});
-document.getElementById('filterDC').addEventListener('input', e => {
-  filterDC = parseInt(e.target.value);
-  document.getElementById('dcVal').textContent = filterDC <= 0 ? 'alle' : '≥ ' + filterDC + ' kW';
-  render();
-});
+function toggleSources(){
+  const body=document.getElementById('sourcesBody');
+  const arrow=document.getElementById('srcArrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
 
-// Initial render
-render();
+renderAll();
 </script>
 </body>
 </html>
